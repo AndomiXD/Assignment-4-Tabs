@@ -1,0 +1,104 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Members
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-item>
+  <ion-label>Munem Jaafar Khalaf - 20197414</ion-label>
+</ion-item>
+
+<ion-item>
+  <ion-label>Ali Yaqoob Yusuf - 20199240</ion-label>
+</ion-item>
+<br>
+
+<ion-content>
+  <ion-item>
+    <ion-list>
+      <ion-radio-group [(ngModel)] = 'filter'>
+        <ion-list-header>
+          <ion-label>
+            Membership type
+          </ion-label>
+        </ion-list-header>
+        <ion-item>
+          <ion-label>All Members</ion-label>
+          <ion-radio value="all_members"></ion-radio>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label>Monthly</ion-label>
+          <ion-radio value="Monthly"></ion-radio>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label>Weekly</ion-label>
+          <ion-radio value="Weekly"></ion-radio>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label>Free Time</ion-label>
+          <ion-radio value="Free Time"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+      <ion-item>
+        <ion-button expand="block" (click) = "applyFilter()">
+          Search
+        </ion-button>
+      </ion-item>
+    </ion-list>
+  </ion-item>
+
+
+    
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Members</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list>
+<ion-item>
+  <ion-label>Add A New Member:</ion-label>
+  <ion-fab-button size="small" (click)="addMember()"> 
+    <ion-icon name="Add"></ion-icon>
+  </ion-fab-button>
+</ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label>
+        Members
+      </ion-label>
+      <ion-label>
+        Membership Type
+      </ion-label>
+    </ion-list-header>
+  
+    <ion-item *ngFor="let member of displayList">
+      <ion-item-sliding>
+        <ion-list (click)="showAlert(member.sNum)">
+          
+          <ion-item>
+            <ion-avatar slot="start">
+              <img src="..\assets\img\person.png">
+            </ion-avatar>
+            <ion-label>{{member.name}}</ion-label>
+            <ion-label>{{member.membership}}</ion-label>
+          </ion-item>
+        
+          <ion-item-options side="end">
+            <ion-item-option color="danger" (click)="removeMember()">Remove Member</ion-item-option>
+          </ion-item-options>
+        </ion-list>
+      </ion-item-sliding>
+    </ion-item>
+  </ion-list>
+
+  
+
+</ion-content>
